@@ -166,3 +166,9 @@ app.param("userId", (req, res, next, userId) => {
 // Start the server by listening
 
 
+app.get("/users/:userId", (req, res) => {
+  res.json({
+    ok: true,
+    userId: req.userIdNum
+  });
+});
