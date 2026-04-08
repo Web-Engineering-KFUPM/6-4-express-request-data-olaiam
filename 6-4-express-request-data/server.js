@@ -109,9 +109,11 @@ LAB SETUP INSTRUCTIONS
 import express from "express";
 
 const app = express();
-app.listen(3000, () => {
-  console.log("API running at http://localhost:3000");
+
+app.get("/", (req, res) => {
+  res.send("Server is up");
 });
+
 
 // create express app instance to create web server
 app.get("/echo", (req, res) => {
@@ -171,4 +173,8 @@ app.get("/users/:userId", (req, res) => {
     ok: true,
     userId: req.userIdNum
   });
+});
+
+app.listen(3000, () => {
+  console.log("API running at http://localhost:3000");
 });
