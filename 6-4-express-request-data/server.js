@@ -134,8 +134,14 @@ app.get("/echo", (req, res) => {
 
 
 // Query params: /echo?name=Ali&age=22
+app.get("/profile/:first/:last", (req, res) => {
+  const { first, last } = req.params;
 
-
+  res.json({
+    ok: true,
+    fullName: `${first} ${last}`
+  });
+});
 // Route params: /profile/First/Last
 
 
