@@ -143,7 +143,19 @@ app.get("/profile/:first/:last", (req, res) => {
   });
 });
 // Route params: /profile/First/Last
+app.param("userId", (req, res, next, userId) => {
+  const userIdNum = Number(userId);
 
+  if (!userIdNum || userIdNum <= 0) {
+    return res.status(400).json({
+      ok: false,
+      error: "userId must be positive number"
+    });
+  }
+
+  req.userIdNum = userIdNum;
+  next();
+});
 
 // Route param middleware example: /users/42
 
